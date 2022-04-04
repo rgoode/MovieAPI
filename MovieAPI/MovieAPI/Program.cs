@@ -13,15 +13,9 @@ namespace MovieAPI
     {
         public static void Main(string[] args)
         {
-            try
-            {
+
             CreateHostBuilder(args).Build().Run();
 
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

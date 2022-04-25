@@ -72,5 +72,14 @@ namespace MovieAPI.Services
             optionsBuilder.UseSqlServer(
             @"Data Source=localhost;Initial Catalog=movieregistration;Integrated Security=True");
         }
+
+        public Movie AddMovie(Movie movieTitle)
+        {
+            Movies.Add(movieTitle);
+            SaveChanges();
+            return movieTitle;
+
+            
+        }
     }
 }

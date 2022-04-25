@@ -32,6 +32,16 @@ namespace MovieAPI
             //services.AddDbContext<MovieContext>(options =>);
             //services.AddDbContext<MovieContext>(options => 
             services.AddDbContext<IMovieContext, MovieContext>();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("movie", builder =>
+                {
+                    builder.AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
+            });
+
 
             services.AddSwaggerGen(c =>
             {
@@ -43,6 +53,7 @@ namespace MovieAPI
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseRouting();
+            app.UseCors("movie");
 
             app.UseAuthorization();
             if (env.IsDevelopment())

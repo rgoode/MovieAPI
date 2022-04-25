@@ -26,8 +26,7 @@ namespace MovieAPI
 
 
         public IEnumerable<Movie> GetMovieByKeyword(string keyWord);
-
-
+        public Movie AddMovie(Movie movieTitle);
     }
 
 

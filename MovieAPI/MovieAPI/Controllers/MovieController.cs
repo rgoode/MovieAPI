@@ -20,6 +20,7 @@ namespace MovieAPI.Controllers
 
         //List all movies 
         [HttpGet]
+        [Route("AllMovies")]
         public IActionResult GetAllMovies()
         {
             return Ok(_movieContext.GetMovies());
@@ -102,20 +103,21 @@ namespace MovieAPI.Controllers
         }
 
 
-        //[HttpPost]
-        //public IActionResult AddMovie([FromBody] AddMovie Title)
-        //{
-        //    var movieTitle = new Movie();
-        //    movieTitle.Title = Title.Title;
+        [HttpPost]
+        public IActionResult AddMovie([FromBody] AddMovie Title)
+        {
+            var movieTitle = new Movie();
+            movieTitle.Title = Title.Title;
 
-        //    var dbMovie = _movieContext.AddMovie(movieTitle);
-        //    dbMovie.SaveChanges();
+            var dbMovie = _movieContext.AddMovie(movieTitle);
+            //dbMovie.SaveChanges();
+            
 
-        //    return Created($"https://localhost:5001/{dbMovie.Title}", dbMovie);
-        //}
+            return Created($"https://localhost:5001/{dbMovie.Title}", dbMovie);
+        }
 
 
-        
+
 
     }
 }
